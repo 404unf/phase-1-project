@@ -35,3 +35,9 @@ body {
     margin: 1rem 2rem;
     box-shadow: 3px 4px #e04b52
 }
+
+.winner-avatar {
+    justify-self: center;
+    height: 12rem;
+    width: auto;
+}
