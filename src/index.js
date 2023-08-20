@@ -27,11 +27,17 @@ function makeCard(data) {
         newP.textContent = `${data[i].likes} Likes`
         newDiv.append(newP)
 
-        const newButton = document.createElement('button')
-        newButton.className = 'like-btn'
-        newButton.id = data[i].id
-        newButton.textContent = 'Like ❤️'
-        newDiv.append(newButton)
+        const newLikeButton = document.createElement('button')
+        newLikeButton.className = 'like-btn'
+        newLikeButton.id = data[i].id
+        newLikeButton.textContent = 'Like ❤️'
+        newDiv.append(newLikeButton)
+
+        const newStatsBtn = document.createElement('button')
+        newStatsBtn.className = 'stats-btn'
+        newStatsBtn.id = data[i].id
+        newStatsBtn.textContent = 'Stats'
+        newDiv.append(newStatsBtn)
 
         collectionDiv.append(newDiv)
     }

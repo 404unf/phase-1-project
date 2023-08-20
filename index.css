@@ -23,8 +23,6 @@ body {
     margin: 2rem;
 }
 
-
-
 .card {
     text-align: center;
     border: grey solid 1px;
@@ -39,6 +37,24 @@ body {
 
 .winner-avatar {
     justify-self: center;
-    height: 12rem;
+    height: 14rem;
     width: auto;
+}
+
+button {
+    position: relative;
+    background-color: #e7f253;
+    border: none;
+    border-radius: 5px;
+    height: 2rem;
+    width: max-content;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    justify-self: center;
+}
+
+button:hover {
+    background-color: whitesmoke;
+    border: #e04b52 solid 1px;
+    color: #e04b52;
 }
