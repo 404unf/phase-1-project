@@ -1,7 +1,12 @@
 // When page loads, fetch winners from the database 
-window.addEventListener('load', fetchWinners)
+window.onload = function () {
+    if (document.readyState == 'complete') {
+        fetchWinners()
+    }
+};
 
 function fetchWinners() {
+    console.log("I've been fetched")
     fetch('http://localhost:3000/winners')
         .then(response => response.json())
         .then(data => makeCard(data))
