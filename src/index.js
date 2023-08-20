@@ -27,18 +27,22 @@ function makeCard(data) {
         newP.textContent = `${data[i].likes} Likes`
         newDiv.append(newP)
 
+        const newBtnDiv = document.createElement('div')
+        newBtnDiv.id = 'btn-div'
+
         const newLikeButton = document.createElement('button')
         newLikeButton.className = 'like-btn'
         newLikeButton.id = data[i].id
         newLikeButton.textContent = 'Like ❤️'
-        newDiv.append(newLikeButton)
+        newBtnDiv.append(newLikeButton)
 
         const newStatsBtn = document.createElement('button')
         newStatsBtn.className = 'stats-btn'
         newStatsBtn.id = data[i].id
         newStatsBtn.textContent = 'Stats'
-        newDiv.append(newStatsBtn)
+        newBtnDiv.append(newStatsBtn)
 
+        newDiv.append(newBtnDiv)
         collectionDiv.append(newDiv)
     }
 }
@@ -95,10 +99,13 @@ function addLikes(event) {
 
 
 
-
+// Stats Button Functionality
 // Reveal Stats when Card is Clicked
-// allAvatars = document.querySelectorAll(".winner-avatar")
-// allAvatars.forEach(card => card.addEventListener('click',revealStats));
+
+function executeStats() {
+    const statsButtons = document.querySelectorAll('.stat-btn')
+    statsButtons.forEach(button => button.addEventListener('click', revealStats))
+}
 
 function retrieveStats(params) {
     
