@@ -24,6 +24,8 @@ body {
 }
 
 .card {
+    position: relative;
+    transition: all .5s ease-in;
     text-align: center;
     border: grey solid 1px;
     padding: 1rem;
@@ -33,6 +35,34 @@ body {
     margin: 1rem 2rem;
     box-shadow: 3px 4px #e04b52;
     background-color: #434041;
+}
+
+#overlay {
+position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: none;
+    transition: .5s ease;
+    background-color: #393839;
+}
+
+#overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: rgb(251, 249, 249);
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.card:hover #overlay {
+    opacity: 1;
 }
 
 .winner-avatar {

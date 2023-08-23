@@ -6,7 +6,6 @@ window.onload = function () {
 };
 
 function fetchWinners() {
-    console.log("I've been fetched")
     fetch('http://localhost:3000/winners')
         .then(response => response.json())
         .then(data => makeCard(data))
@@ -48,6 +47,16 @@ function makeCard(data) {
         newBtnDiv.append(newStatsBtn)
 
         newDiv.append(newBtnDiv)
+
+        const newOverlay = document.createElement('div')
+        newOverlay.id = 'overlay'
+
+        const newOverlayText = document.createElement('div')
+        newOverlayText.id = 'overlay-text'
+        newOverlay.append(newOverlayText)
+
+        newDiv.append(newOverlay)
+
         collectionDiv.append(newDiv)
     }
 }
@@ -105,7 +114,10 @@ function addLikes(event) {
 
 
 // Stats Button Functionality
-// Reveal Stats when Card is Clicked
+// Reveal Stats when Stats button is Clicked
+setTimeout(() => {
+    executeStats()
+}, 3010);
 
 function executeStats() {
     const statsButtons = document.querySelectorAll('.stat-btn')
@@ -120,6 +132,7 @@ function populateStats(params) {
     
 }
 
-function revealStats(params) {
-    
+function revealStats() {
+   const overlay = document.getElementById('overlay')
+   overlay.style.visibility = 'visible'
 }
