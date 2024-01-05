@@ -13,6 +13,8 @@ function fetchWinners() {
 
 function makeCard(data) {
     for (let i = 0; i < data.length; i++) {
+        const survivorId = data[i].id
+
         const collectionDiv = document.getElementById('winner-collection')
         const newDiv = document.createElement('div')
         newDiv.className = 'card'
@@ -36,15 +38,9 @@ function makeCard(data) {
 
         const newLikeButton = document.createElement('button')
         newLikeButton.className = 'like-btn'
-        newLikeButton.id = data[i].id
+        newLikeButton.id = survivorId
         newLikeButton.textContent = 'Like ❤️'
         newBtnDiv.append(newLikeButton)
-
-        const newStatsBtn = document.createElement('button')
-        newStatsBtn.className = 'stats-btn'
-        newStatsBtn.id = data[i].id
-        newStatsBtn.textContent = 'Stats'
-        newBtnDiv.append(newStatsBtn)
 
         newDiv.append(newBtnDiv)
 
@@ -53,6 +49,17 @@ function makeCard(data) {
 
         const newOverlayText = document.createElement('div')
         newOverlayText.id = 'overlay-text'
+
+        const overlayHeader = document.createElement('h4')
+        overlayHeader.textContent = 'Seasons Won'
+        newOverlayText.append(overlayHeader)
+
+        const newOverlayList = document.createElement('ul')
+        newOverlayList.id = `overlay-list-${survivorId}`
+        newOverlayText.append(newOverlayList)
+
+        retrieveStats(survivorId)
+
         newOverlay.append(newOverlayText)
 
         newDiv.append(newOverlay)
@@ -114,25 +121,39 @@ function addLikes(event) {
 
 
 // Stats Button Functionality
-// Reveal Stats when Stats button is Clicked
+// Reveal Stats when Hovering over the image
 setTimeout(() => {
     executeStats()
 }, 3010);
 
 function executeStats() {
     const statsButtons = document.querySelectorAll('.stat-btn')
-    statsButtons.forEach(button => button.addEventListener('click', revealStats))
+    statsButtons.forEach(button => button.addEventListener('click', revealStatsOnHover))
 }
 
-function retrieveStats(params) {
-    
+function retrieveStats(id) {
+    fetch(`http://localhost:3000/winners/${id}`)
+        .then(response => response.json())
+        .then(data => populateStats(data))
 }
 
-function populateStats(params) {
-    
+function populateStats(data) {
+    const seasons = data.seasons_won
+    const survivorId = data.id
+
+    seasons.forEach(season => attachLi(survivorId,season))
 }
 
-function revealStats() {
-   const overlay = document.getElementById('overlay')
-   overlay.style.visibility = 'visible'
+function attachLi(id, season) {
+    const overlayList = document.getElementById(`overlay-list-${id}`)
+
+    const overlayLi = document.createElement('li')
+    overlayLi.textContent = season
+
+    overlayList.appendChild(overlayLi)
+}
+
+function revealStatsOnHover() {
+    const overlay = document.getElementById('overlay')
+    overlay.style.visibility = 'visible'
 }

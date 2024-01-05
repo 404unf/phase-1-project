@@ -51,11 +51,11 @@ position: absolute;
     background-color: #393839;
 }
 
-#overlay-text {
+.overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 50px;
+    font-size: 90px;
     color: rgb(251, 249, 249);
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -90,7 +90,7 @@ button:hover {
 }
 
 .like-btn {
-    float: left;
+    float: center;
 }
 
 .stats-btn {
