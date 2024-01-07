@@ -37,42 +37,48 @@ body {
     background-color: #434041;
 }
 
-#overlay {
-position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
+.card-header {
+    position: relative;
+}
+
+.img-wrapper {
+    position: absolute;
+    z-index: 1;
+    padding: 5rem;
+    top: 60px;
+    left: 20px;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 3;
+    top: 20px;
+    left: 20px;
+    height: 14rem;
+    width: 120%;
     opacity: 0;
     visibility: none;
     transition: .5s ease;
-    background-color: #393839;
+    background-color: #434041;
 }
 
-.overlay-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 90px;
-    color: rgb(251, 249, 249);
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-}
 
-.card:hover #overlay {
+.card:hover .overlay {
     opacity: 1;
 }
 
 .winner-avatar {
-    justify-self: center;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
     height: 14rem;
     width: auto;
+
 }
 
 button {
-    position: relative;
+    position: absolute;
     background-color: #e7f253;
     border: none;
     border-radius: 5px;
@@ -81,6 +87,7 @@ button {
     color: rgb(0, 0, 0);
     font-size: 12px;
     justify-self: center;
+    top: 380px;
 }
 
 button:hover {
@@ -90,9 +97,19 @@ button:hover {
 }
 
 .like-btn {
-    float: center;
+    float: left;
+    left: 20px;
 }
 
 .stats-btn {
     float: right;
+    left: 200px;
+
+}
+
+
+.likes-p {
+    position: absolute;
+    top: 300px;
+    left: 110px;
 }
