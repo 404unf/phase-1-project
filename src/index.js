@@ -145,15 +145,15 @@ function executeLikes() {
 
 function addLikes(event) {
     event.preventDefault()
-    const id = this.id
+    const id = this.id.replace('like-btn-', '')
 
     // Get current number of likes
     fetch(`http://localhost:3000/winners/${id}`)
         .then(response => response.json())
-        .then(data => processLikes(data))
+        .then(data => processLikes(id,data))
 }
 
-function processLikes(data) {
+function processLikes(id,data) {
     let numberOfLikes = parseInt(data.likes)
     numberOfLikes++
 
